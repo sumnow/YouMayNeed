@@ -1,0 +1,1 @@
+nohup node /home/blog/server.js

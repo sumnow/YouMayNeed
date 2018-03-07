@@ -1,0 +1,1 @@
+nohup node /home/localMock/index.js
