@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        window.rohrdata = "";
+        window.Rohr_Opt = new Object;
+        window.Rohr_Opt.Flag = 100001,
+            window.Rohr_Opt.LogVal = "rohrdata";
+    </script>
+    <script src="rohr.min.js"></script>
+    <script type="text/javascript">
+        function req() {
+            $.ajax({
+                url: 'http://localhost:8000/',
+                type: 'get',
+                success: function (data) {
+                    $.ajax({
+                        url: 'http://localhost:8000/uuid',
+                        type: 'POST',
+                        data: {
+                            uuid: data.uuid,
+                            token: getT({ uuid: data.uuid })
+                        }
+                    })
+                }
+            })
+        }
+        setInterval(req,1000);
+        function getT(obj) {
+            window.Rohr_Opt.reload(obj);
+            return encodeURIComponent(window.rohrdata);
+        }
+    </script>
+</body>
+
+</html>
