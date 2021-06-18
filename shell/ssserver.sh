@@ -1,1 +1,0 @@
-nohup ssserver -c /root/ss/ssserver.json -d start &
